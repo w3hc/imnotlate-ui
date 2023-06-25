@@ -1,7 +1,7 @@
 import { ThemingProps } from '@chakra-ui/react'
 import { Chain } from '@wagmi/chains'
 
-export const SITE_NAME = 'I\'m not late'
+export const SITE_NAME = 'I&apos;m not late'
 export const SITE_DESCRIPTION = 'A Web3 app boilerplate built with Next.js, Chakra UI, Ethers, Wagmi and ConnectKit'
 export const SITE_URL = 'https://w3hc.org'
 export const THEME_INITIAL_COLOR = 'dark'

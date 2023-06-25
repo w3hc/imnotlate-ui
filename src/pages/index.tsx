@@ -66,7 +66,7 @@ export default function Home() {
       <Head />
 
       <main>
-        <Heading as="h2">You're not late!</Heading>
+        <Heading as="h2">You&apos;re not late!</Heading>
 
         {isDisconnected ? (
           <>
@@ -78,7 +78,7 @@ export default function Home() {
             <br />
 
             <p>
-              You&apos;re about to mint 1 <strong>I'm not late NFT</strong> on <strong>{network.chain?.name}</strong>.
+              You&apos;re about to mint 1 <strong>I&apos;m not late NFT</strong> on <strong>{network.chain?.name}</strong>.
             </p>
             <br />
             <p>
@@ -124,7 +124,7 @@ export default function Home() {
               src="https://bafybeihaafblie2zrbb2y4dsagmyaw5txkqdznzv3ivzrtxliyhqqzhdka.ipfs.w3s.link/imnotlate"
             />
             <br />
-            <p>This is a historic moment. You're not late and you can prove it.</p>
+            <p>This is a historic moment. You&apos;re not late and you can prove it.</p>
             <br />
             <LinkComponent target="blank" href={txLink}>
               {txLink}
