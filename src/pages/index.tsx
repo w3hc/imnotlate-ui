@@ -1,4 +1,4 @@
-import { Heading, Button } from '@chakra-ui/react'
+import { Heading, Button, Image } from '@chakra-ui/react'
 import { Head } from '../components/layout/Head'
 // import Image from 'next/image'
 import { LinkComponent } from '../components/layout/LinkComponent'
@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 import { useFeeData, useSigner, useAccount, useBalance, useNetwork } from 'wagmi'
 import { ethers } from 'ethers'
 import { NFT_CONTRACT_ADDRESS, NFT_CONTRACT_ABI } from '../lib/consts'
-import useSound from 'use-sound' // https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
-const stevie = 'https://bafybeicxvrehw23nzkwjcxvsytimqj2wos7dhh4evrv5kscbbj6agilcsy.ipfs.w3s.link/another-star.mp3'
+// import useSound from 'use-sound' // https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
+// const stevie = 'https://bafybeicxvrehw23nzkwjcxvsytimqj2wos7dhh4evrv5kscbbj6agilcsy.ipfs.w3s.link/another-star.mp3'
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false)
@@ -27,9 +27,9 @@ export default function Home() {
   })
   const network = useNetwork()
 
-  const [play, { stop, pause }] = useSound(stevie, {
-    volume: 0.5,
-  })
+  // const [play, { stop, pause }] = useSound(stevie, {
+  //   volume: 0.5,
+  // })
 
   const explorerUrl = network.chain?.blockExplorers?.default.url
 
@@ -54,7 +54,7 @@ export default function Home() {
       console.log('tx:', nftReceipt)
       setTxLink(explorerUrl + '/tx/' + nftReceipt.transactionHash)
       setLoading(false)
-      play()
+      // play()
     } catch (e) {
       setLoading(false)
       console.log('error:', e)
@@ -66,23 +66,30 @@ export default function Home() {
       <Head />
 
       <main>
-        <Heading as="h2">Basic Minter</Heading>
-        <br />
-        <p>Welcome to Basic Minter!</p>
+        <Heading as="h2">You&apos;re not late!</Heading>
 
         {isDisconnected ? (
           <>
             <br />
-            <p>Please connect your wallet if you want to mint.</p>
+            <p>Please connect your wallet.</p>
           </>
         ) : (
           <>
             <br />
 
-            <p>You&apos;re about to mint 1 NFT on {network.chain.name}.</p>
+            <p>
+              You&apos;re about to mint 1 <strong>I&apos;m not late NFT</strong> on <strong>{network.chain?.name}</strong>.
+            </p>
             <br />
             <p>
-              You&apos;re connected to <strong>{network.chain.name}</strong> and your wallet currently holds
+              NFT contract address:{' '}
+              <LinkComponent target="blank" href={`${explorerUrl}/address/${NFT_CONTRACT_ADDRESS}`}>
+                <strong>{NFT_CONTRACT_ADDRESS}</strong>
+              </LinkComponent>{' '}
+            </p>
+            <br />
+            <p>
+              You&apos;re connected to <strong>{network.chain?.name}</strong> and your wallet currently holds
               <strong> {userBal}</strong>. You can go ahead and click on the &apos;Mint&apos; button below: you will be invited to sign your
               transaction.{' '}
             </p>
@@ -110,7 +117,14 @@ export default function Home() {
           <>
             <br />
             <br />
-            <p>Done! You can view your transaction on Etherscan:</p>
+            <Image
+              height="800"
+              width="800"
+              alt="Imnotlate"
+              src="https://bafybeihaafblie2zrbb2y4dsagmyaw5txkqdznzv3ivzrtxliyhqqzhdka.ipfs.w3s.link/imnotlate"
+            />
+            <br />
+            <p>This is a historic moment. You&apos;re not late and you can prove it.</p>
             <br />
             <LinkComponent target="blank" href={txLink}>
               {txLink}
@@ -119,11 +133,11 @@ export default function Home() {
         )}
         <br />
         <br />
-        {txLink && (
+        {/* {txLink && (
           <Button colorScheme="red" variant="outline" onClick={() => stop()}>
             Stop the music
           </Button>
-        )}
+        )} */}
         {/* <Image height="800" width="800" alt="contract-image" src="/thistle-contract-feb-15-2023.png" /> */}
       </main>
     </>

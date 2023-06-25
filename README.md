@@ -1,11 +1,10 @@
-# Another Star
+# I'm not late
 
-This repo was forked from [Nexth](https://github.com/wslyvh/nexth).
+Allows users to mint an `I'm not late` NFT.
 
-It's a Web3 app boilerplate built with Next.js, Chakra UI, Ethers, Wagmi and ConnectKit.
+Live at: [https://imnotlate.on.fleek.co/](https://imnotlate.on.fleek.co/)
 
-- Netlify: [https://another-star.netlify.app/](https://another-star.netlify.app/)
-- IPFS: [https://bafybeiaadcgdrw5pulupdykl4bmxayzx3yfqiipy73nvh5rf3rgtun47um.ipfs.w3s.link](https://bafybeiaadcgdrw5pulupdykl4bmxayzx3yfqiipy73nvh5rf3rgtun47um.ipfs.w3s.link)
+Solidity contracts: https://github.com/w3hc/imnotlate-contracts
 
 ## Install
 
@@ -18,6 +17,13 @@ npm i
 ```sh
 npm run dev
 ```
+
+## Links
+
+- Metadata: https://bafybeibud4xds4el75ggpvwgexw45xtxxiv56h5akgfnvrcdad7q2hxgiy.ipfs.w3s.link/imnotlate.json
+- Image: https://bafybeihaafblie2zrbb2y4dsagmyaw5txkqdznzv3ivzrtxliyhqqzhdka.ipfs.w3s.link/imnotlate
+- 1st working version: https://bafybeifzczgb6uiv3nvhfbg5de7pvlj5b2j3fpi4ud6ktgglbr5ymdd62m.ipfs.dweb.link/
+- Contract address: [0xe2c7afe278BD3B60798208F84281A4e4733d1688](https://explorer-test.arthera.net/address/0xe2c7afe278BD3B60798208F84281A4e4733d1688)
 
 ## Support
 
