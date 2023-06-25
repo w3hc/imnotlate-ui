@@ -79,10 +79,10 @@ export default function Home() {
           <>
             <br />
 
-            <p>You&apos;re about to mint 1 NFT on Ethereum Goerli Testnet.</p>
+            <p>You&apos;re about to mint 1 NFT on {network.chain.name}.</p>
             <br />
             <p>
-              You&apos;re connected to <strong>Ethereum Goerli Testnet</strong> and your wallet currently holds
+              You&apos;re connected to <strong>{network.chain.name}</strong> and your wallet currently holds
               <strong> {userBal}</strong>. You can go ahead and click on the &apos;Mint&apos; button below: you will be invited to sign your
               transaction.{' '}
             </p>
