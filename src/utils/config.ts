@@ -1,7 +1,7 @@
 import { ThemingProps } from '@chakra-ui/react'
 import { Chain } from '@wagmi/chains'
 
-export const SITE_NAME = 'I&apos;m not late'
+export const SITE_NAME = "I'm not late"
 export const SITE_DESCRIPTION = 'This is a historic moment. You&apos;re not late and you can prove it.'
 export const SITE_URL = 'https://imnotlate.on.fleek.co/'
 export const THEME_INITIAL_COLOR = 'dark'
@@ -13,7 +13,7 @@ export const THEME_CONFIG = {
 export const SOCIAL_TWITTER = 'W3HC'
 export const SOCIAL_GITHUB = 'w3hc/nexth'
 
-export const artheraTestnet = {
+export const artheraTestnet: Chain = {
   id: 10243,
   name: 'Arthera TestNet',
   network: 'artheraTestnet',
@@ -30,7 +30,7 @@ export const artheraTestnet = {
     etherscan: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
     default: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
   },
-} as any
+}
 
 export const ETH_CHAINS = [artheraTestnet]
 export const alchemyId = process.env.NEXT_PUBLIC_ARBITRUM_ALCHEMY_ID
