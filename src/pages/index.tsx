@@ -71,7 +71,7 @@ export default function Home() {
         {isDisconnected ? (
           <>
             <br />
-            <p>Please connect your wallet if you want to mint.</p>
+            <p>Please connect your wallet.</p>
           </>
         ) : (
           <>
