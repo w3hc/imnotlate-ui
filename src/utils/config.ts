@@ -30,7 +30,7 @@ export const artheraTestnet = {
     etherscan: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
     default: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
   },
-}
+} as any
 
 export const ETH_CHAINS = [artheraTestnet]
 export const alchemyId = process.env.NEXT_PUBLIC_ARBITRUM_ALCHEMY_ID
