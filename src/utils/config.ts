@@ -2,8 +2,8 @@ import { ThemingProps } from '@chakra-ui/react'
 import { Chain } from '@wagmi/chains'
 
 export const SITE_NAME = 'I&apos;m not late'
-export const SITE_DESCRIPTION = 'A Web3 app boilerplate built with Next.js, Chakra UI, Ethers, Wagmi and ConnectKit'
-export const SITE_URL = 'https://w3hc.org'
+export const SITE_DESCRIPTION = 'This is a historic moment. You&apos;re not late and you can prove it.'
+export const SITE_URL = 'https://imnotlate.on.fleek.co/'
 export const THEME_INITIAL_COLOR = 'dark'
 export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'gray'
 export const THEME_CONFIG = {
