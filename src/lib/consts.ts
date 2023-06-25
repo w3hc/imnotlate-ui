@@ -1,9 +1,31 @@
-export const NFT_CONTRACT_ADDRESS = '0x751a7FC7e15Af99A31c02d9d82AdE2e3ab5294BC'
+export const NFT_CONTRACT_ADDRESS = '0xe2c7afe278BD3B60798208F84281A4e4733d1688'
 export const NFT_CONTRACT_ABI = <const>[
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_uri',
+        type: 'string',
+      },
+    ],
     stateMutability: 'nonpayable',
     type: 'constructor',
+  },
+  {
+    inputs: [],
+    name: 'InvalidShortString',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: 'str',
+        type: 'string',
+      },
+    ],
+    name: 'StringTooLong',
+    type: 'error',
   },
   {
     anonymous: false,
@@ -59,6 +81,25 @@ export const NFT_CONTRACT_ABI = <const>[
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_fromTokenId',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_toTokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'BatchMetadataUpdate',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
         internalType: 'address',
         name: 'delegator',
@@ -107,6 +148,44 @@ export const NFT_CONTRACT_ABI = <const>[
   },
   {
     anonymous: false,
+    inputs: [],
+    name: 'EIP712DomainChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'MetadataUpdate',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'previousOwner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'OwnershipTransferred',
+    type: 'event',
+  },
+  {
+    anonymous: false,
     inputs: [
       {
         indexed: true,
@@ -129,6 +208,19 @@ export const NFT_CONTRACT_ABI = <const>[
     ],
     name: 'Transfer',
     type: 'event',
+  },
+  {
+    inputs: [],
+    name: 'CLOCK_MODE',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
@@ -191,6 +283,19 @@ export const NFT_CONTRACT_ABI = <const>[
     name: 'burn',
     outputs: [],
     stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'clock',
+    outputs: [
+      {
+        internalType: 'uint48',
+        name: '',
+        type: 'uint48',
+      },
+    ],
+    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -264,6 +369,49 @@ export const NFT_CONTRACT_ABI = <const>[
     type: 'function',
   },
   {
+    inputs: [],
+    name: 'eip712Domain',
+    outputs: [
+      {
+        internalType: 'bytes1',
+        name: 'fields',
+        type: 'bytes1',
+      },
+      {
+        internalType: 'string',
+        name: 'name',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: 'version',
+        type: 'string',
+      },
+      {
+        internalType: 'uint256',
+        name: 'chainId',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'verifyingContract',
+        type: 'address',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'salt',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint256[]',
+        name: 'extensions',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'uint256',
@@ -286,7 +434,7 @@ export const NFT_CONTRACT_ABI = <const>[
     inputs: [
       {
         internalType: 'uint256',
-        name: 'blockNumber',
+        name: 'timepoint',
         type: 'uint256',
       },
     ],
@@ -310,7 +458,7 @@ export const NFT_CONTRACT_ABI = <const>[
       },
       {
         internalType: 'uint256',
-        name: 'blockNumber',
+        name: 'timepoint',
         type: 'uint256',
       },
     ],
@@ -401,6 +549,19 @@ export const NFT_CONTRACT_ABI = <const>[
     type: 'function',
   },
   {
+    inputs: [],
+    name: 'owner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'uint256',
@@ -417,6 +578,13 @@ export const NFT_CONTRACT_ABI = <const>[
       },
     ],
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -621,6 +789,19 @@ export const NFT_CONTRACT_ABI = <const>[
       },
     ],
     name: 'transferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'transferOwnership',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
