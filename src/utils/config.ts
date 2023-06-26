@@ -2,7 +2,7 @@ import { ThemingProps } from '@chakra-ui/react'
 import { Chain } from '@wagmi/chains'
 
 export const SITE_NAME = "I'm not late"
-export const SITE_DESCRIPTION = 'This is a historic moment. You&apos;re not late and you can prove it.'
+export const SITE_DESCRIPTION = "This is a historic moment. You're not late and you can prove it."
 export const SITE_URL = 'https://imnotlate.on.fleek.co/'
 export const THEME_INITIAL_COLOR = 'dark'
 export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'gray'
