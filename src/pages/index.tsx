@@ -51,7 +51,7 @@ export default function Home() {
     console.log('minting...')
     try {
       setLoading(true)
-      const call = await nft.safeMint()
+      const call = await nft.safeMint({ gasLimit: 300000 })
       const nftReceipt = await call.wait(1)
       console.log('tx:', nftReceipt)
       setTxLink(explorerUrl + '/tx/' + nftReceipt.transactionHash)
