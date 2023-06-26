@@ -1,4 +1,4 @@
-import { Heading, Button, Image } from '@chakra-ui/react'
+import { Heading, Button, Image, useToast } from '@chakra-ui/react'
 import { Head } from '../components/layout/Head'
 // import Image from 'next/image'
 import { LinkComponent } from '../components/layout/LinkComponent'
@@ -13,6 +13,8 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(false)
   const [userBal, setUserBal] = useState<string>('')
   const [txLink, setTxLink] = useState<string>('')
+
+  const toast = useToast()
 
   const { data } = useFeeData()
   const { address, isConnecting, isDisconnected } = useAccount()
@@ -54,8 +56,23 @@ export default function Home() {
       console.log('tx:', nftReceipt)
       setTxLink(explorerUrl + '/tx/' + nftReceipt.transactionHash)
       setLoading(false)
-      // play()
+      toast({
+        title: 'Success',
+        description: "Congrats! You're now the happy owner of this NFT!",
+        status: 'success',
+        duration: 8000,
+        position: 'top',
+        isClosable: true,
+      })
     } catch (e) {
+      toast({
+        title: 'Mint failed',
+        description: 'Something went wrong during the minting process, sorry about that. Please try again.',
+        status: 'error',
+        duration: 8000,
+        position: 'top',
+        isClosable: true,
+      })
       setLoading(false)
       console.log('error:', e)
     }
