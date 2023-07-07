@@ -137,8 +137,8 @@ export default function Home() {
             <Image
               height="800"
               width="800"
-              alt="Imnotlate"
-              src="https://bafybeihaafblie2zrbb2y4dsagmyaw5txkqdznzv3ivzrtxliyhqqzhdka.ipfs.w3s.link/imnotlate"
+              alt="arthera-logo"
+              src="https://bafybeiaswv3numcgmtcby6mgdlurmzisi5fzzujozyistx6ozqvutrdony.ipfs.w3s.link/arthera-logo.png"
             />
             <br />
             <p>This is a historic moment. You&apos;re not late and you can prove it.</p>

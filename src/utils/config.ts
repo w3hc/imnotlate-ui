@@ -1,9 +1,9 @@
 import { ThemingProps } from '@chakra-ui/react'
 import { Chain } from '@wagmi/chains'
 
-export const SITE_NAME = "I'm not late"
-export const SITE_DESCRIPTION = "This is a historic moment. You're not late and you can prove it."
-export const SITE_URL = 'https://imnotlate.on.fleek.co/'
+export const SITE_NAME = 'Arthera Faucet Wheel'
+export const SITE_DESCRIPTION = 'Spin the wheel and get some AA!'
+export const SITE_URL = 'https://arthera-faucet-wheel.on.fleek.co/'
 export const THEME_INITIAL_COLOR = 'dark'
 export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'gray'
 export const THEME_CONFIG = {
@@ -11,7 +11,7 @@ export const THEME_CONFIG = {
 }
 
 export const SOCIAL_TWITTER = 'W3HC'
-export const SOCIAL_GITHUB = 'w3hc/nexth'
+export const SOCIAL_GITHUB = 'w3hc/arthera-faucet-wheel'
 
 export const artheraTestnet: Chain = {
   id: 10243,
