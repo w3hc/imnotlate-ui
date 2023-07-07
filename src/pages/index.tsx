@@ -8,15 +8,58 @@ import { ethers } from 'ethers'
 import { NFT_CONTRACT_ADDRESS, NFT_CONTRACT_ABI } from '../lib/consts'
 // import useSound from 'use-sound' // https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
 // const stevie = 'https://bafybeicxvrehw23nzkwjcxvsytimqj2wos7dhh4evrv5kscbbj6agilcsy.ipfs.w3s.link/another-star.mp3'
+import { Wheel } from 'react-custom-roulette'
+
+const data = [
+  { option: 'REACT' },
+  { option: 'CUSTOM' },
+  { option: 'ROULETTE', style: { textColor: '#f9dd50' } },
+  { option: 'WHEEL' },
+  { option: 'REACT' },
+  { option: 'CUSTOM' },
+  { option: 'ROULETTE', style: { textColor: '#70bbe0' } },
+  { option: 'WHEEL' },
+]
+
+const backgroundColors = ['#ff8f43', '#70bbe0', '#0b3351', '#f9dd50']
+const textColors = ['#0b3351']
+const outerBorderColor = '#eeeeee'
+const outerBorderWidth = 5
+const innerBorderColor = '#30261a'
+const innerBorderWidth = 0
+const innerRadius = 0
+const radiusLineColor = '#eeeeee'
+const radiusLineWidth = 8
+const fontFamily = 'Nunito'
+const fontWeight = 'bold'
+const fontSize = 20
+const fontStyle = 'normal'
+const textDistance = 60
+const spinDuration = 3.0
 
 export default function Home() {
+  if (typeof window !== 'undefined') {
+    //This code is executed in the browser
+    console.log('window.innerWidth #1:', window.innerWidth)
+  }
+  console.log('radiusLineColor:', radiusLineColor)
   const [loading, setLoading] = useState<boolean>(false)
   const [userBal, setUserBal] = useState<string>('')
   const [txLink, setTxLink] = useState<string>('')
+  const [mustSpin, setMustSpin] = useState(false)
+  const [prizeNumber, setPrizeNumber] = useState(0)
+
+  const handleSpinClick = () => {
+    if (!mustSpin) {
+      const newPrizeNumber = Math.floor(Math.random() * data.length)
+      setPrizeNumber(newPrizeNumber)
+      setMustSpin(true)
+    }
+  }
 
   const toast = useToast()
 
-  const { data } = useFeeData()
+  // const { data } = useFeeData()
   const { address, isConnecting, isDisconnected } = useAccount()
 
   const { data: signer } = useSigner()
@@ -40,51 +83,21 @@ export default function Home() {
   useEffect(() => {
     const val = Number(bal?.formatted).toFixed(3)
     setUserBal(String(val) + ' ' + bal?.symbol)
+    if (typeof window !== 'undefined') {
+      //This code is executed in the browser
+      console.log('window.innerWidth #2:', window.innerWidth)
+    }
   }, [bal?.formatted, bal?.symbol, address])
 
-  const checkFees = () => {
-    console.log('data?.formatted:', JSON.stringify(data?.formatted))
-    return JSON.stringify(data?.formatted)
+  if (typeof window !== 'undefined') {
+    //This code is executed in the browser
+    console.log('window.innerWidth #3:', window.innerWidth)
   }
-
-  const mint = async () => {
-    console.log('minting...')
-    try {
-      setLoading(true)
-      const call = await nft.safeMint({ gasLimit: 300000 })
-      const nftReceipt = await call.wait(1)
-      console.log('tx:', nftReceipt)
-      setTxLink(explorerUrl + '/tx/' + nftReceipt.transactionHash)
-      setLoading(false)
-      toast({
-        title: 'Success',
-        description: "Congrats! You're now the happy owner of this NFT!",
-        status: 'success',
-        duration: 8000,
-        position: 'top',
-        isClosable: true,
-      })
-    } catch (e) {
-      toast({
-        title: 'Mint failed',
-        description: 'Something went wrong during the minting process, sorry about that. Please try again.',
-        status: 'error',
-        duration: 8000,
-        position: 'top',
-        isClosable: true,
-      })
-      setLoading(false)
-      console.log('error:', e)
-    }
-  }
-
   return (
     <>
       <Head />
 
       <main>
-        <Heading as="h2">You&apos;re not late!</Heading>
-
         {isDisconnected ? (
           <>
             <br />
@@ -93,40 +106,42 @@ export default function Home() {
         ) : (
           <>
             <br />
-
-            <p>
-              You&apos;re about to mint 1 <strong>I&apos;m not late NFT</strong> on <strong>{network.chain?.name}</strong>.
-            </p>
-            <br />
-            <p>
-              NFT contract address:{' '}
-              <LinkComponent target="blank" href={`${explorerUrl}/address/${NFT_CONTRACT_ADDRESS}`}>
-                <strong>{NFT_CONTRACT_ADDRESS}</strong>
-              </LinkComponent>{' '}
-            </p>
-            <br />
-            <p>
-              You&apos;re connected to <strong>{network.chain?.name}</strong> and your wallet currently holds
-              <strong> {userBal}</strong>. You can go ahead and click on the &apos;Mint&apos; button below: you will be invited to sign your
-              transaction.{' '}
-            </p>
+            <Wheel
+              mustStartSpinning={mustSpin}
+              prizeNumber={prizeNumber}
+              data={data}
+              backgroundColors={backgroundColors}
+              textColors={textColors}
+              fontFamily={fontFamily}
+              fontSize={fontSize}
+              fontWeight={fontWeight}
+              fontStyle={fontStyle}
+              outerBorderColor={outerBorderColor}
+              outerBorderWidth={outerBorderWidth}
+              innerRadius={innerRadius}
+              innerBorderColor={innerBorderColor}
+              innerBorderWidth={innerBorderWidth}
+              radiusLineColor={radiusLineColor}
+              radiusLineWidth={radiusLineWidth}
+              spinDuration={spinDuration}
+              startingOptionIndex={2}
+              // perpendicularText
+              textDistance={textDistance}
+              onStopSpinning={() => {
+                setMustSpin(false)
+              }}
+            />
           </>
         )}
 
         <br />
         {!loading ? (
-          !txLink ? (
-            <Button colorScheme="green" variant="outline" onClick={mint}>
-              Mint
-            </Button>
-          ) : (
-            <Button disabled colorScheme="green" variant="outline" onClick={mint}>
-              Mint
-            </Button>
-          )
+          <Button colorScheme="green" variant="outline" onClick={handleSpinClick}>
+            Spin
+          </Button>
         ) : (
-          <Button isLoading colorScheme="green" loadingText="Minting" variant="outline">
-            Mint
+          <Button isLoading colorScheme="green" loadingText="Spinning" variant="outline">
+            Spin
           </Button>
         )}
 
