@@ -19,7 +19,7 @@ export function Seo() {
         url: origin,
         images: [
           {
-            url: `https://bafybeihaafblie2zrbb2y4dsagmyaw5txkqdznzv3ivzrtxliyhqqzhdka.ipfs.w3s.link/imnotlate`,
+            url: `https://bafybeiaswv3numcgmtcby6mgdlurmzisi5fzzujozyistx6ozqvutrdony.ipfs.w3s.link/arthera-logo.png`,
             alt: `${SITE_NAME} Open Graph Image`,
           },
         ],
