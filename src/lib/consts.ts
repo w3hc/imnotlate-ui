@@ -1,32 +1,5 @@
-export const NFT_CONTRACT_ADDRESS = '0xe2c7afe278BD3B60798208F84281A4e4733d1688'
+export const NFT_CONTRACT_ADDRESS = '0x159025f4A1FbA5e592317b2Ff988004f8582Ca78'
 export const NFT_CONTRACT_ABI = <const>[
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: '_uri',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'constructor',
-  },
-  {
-    inputs: [],
-    name: 'InvalidShortString',
-    type: 'error',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'str',
-        type: 'string',
-      },
-    ],
-    name: 'StringTooLong',
-    type: 'error',
-  },
   {
     anonymous: false,
     inputs: [
@@ -157,6 +130,19 @@ export const NFT_CONTRACT_ABI = <const>[
     inputs: [
       {
         indexed: false,
+        internalType: 'uint8',
+        name: 'version',
+        type: 'uint8',
+      },
+    ],
+    name: 'Initialized',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: 'uint256',
         name: '_tokenId',
         type: 'uint256',
@@ -230,6 +216,25 @@ export const NFT_CONTRACT_ABI = <const>[
         internalType: 'bytes32',
         name: '',
         type: 'bytes32',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'alreadyMinted',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
       },
     ],
     stateMutability: 'view',
@@ -474,6 +479,19 @@ export const NFT_CONTRACT_ABI = <const>[
     type: 'function',
   },
   {
+    inputs: [],
+    name: 'getSubscriptionOwner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'address',
@@ -490,6 +508,19 @@ export const NFT_CONTRACT_ABI = <const>[
       },
     ],
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_uri',
+        type: 'string',
+      },
+    ],
+    name: 'initialize',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -588,7 +619,13 @@ export const NFT_CONTRACT_ABI = <const>[
     type: 'function',
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_target',
+        type: 'address',
+      },
+    ],
     name: 'safeMint',
     outputs: [],
     stateMutability: 'nonpayable',
