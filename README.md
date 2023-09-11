@@ -4,7 +4,6 @@ Allows users to mint an `I'm not late` NFT.
 
 Available on:
 
-- Fleek: [https://imnotlate.on.fleek.co/](https://imnotlate.on.fleek.co/)
 - Netlify: [https://imnotlate.netlify.app/](https://imnotlate.netlify.app/)
 
 Solidity contracts: https://github.com/w3hc/imnotlate-contracts
