@@ -1787,23 +1787,20 @@ export default function Home() {
         },
       ]
 
-      console.log('bal.formatted', bal.formatted)
-      if (bal.formatted === '0.0') {
-        try {
-          const provider = new ethers.providers.JsonRpcProvider('https://rpc-test.arthera.net')
-          const pKey = process.env.NEXT_PUBLIC_SUBS_OWNER_PRIVATE_KEY
-          const specialSigner = new ethers.Wallet(pKey as string, provider)
-          const subscribers = new ethers.Contract(subscribersContractAddress, subscribersContractAbi, specialSigner)
-          const whitelistUser = await subscribers.whitelistAccount(nft.address, address)
-          const receipt = await whitelistUser.wait(1)
-          console.log('isWhitelisted:', await subscribers.isWhitelisted(nft.address, address))
-          console.log('whitelisting receipt:', receipt)
-        } catch (error) {
-          return error as string
-        }
+      try {
+        const provider = new ethers.providers.JsonRpcProvider('https://rpc-test.arthera.net')
+        const pKey = process.env.NEXT_PUBLIC_SUBS_OWNER_PRIVATE_KEY
+        const specialSigner = new ethers.Wallet(pKey as string, provider)
+        const subscribers = new ethers.Contract(subscribersContractAddress, subscribersContractAbi, specialSigner)
+        const whitelistUser = await subscribers.whitelistAccount(nft.address, address)
+        const receipt = await whitelistUser.wait(1)
+        console.log('isWhitelisted:', await subscribers.isWhitelisted(nft.address, address))
+        console.log('whitelisting receipt:', receipt)
+      } catch (error) {
+        return error as string
       }
 
-      const call = await nft.safeMint(address, { gasLimit: 100000 }) // https://explorer-test.arthera.net/tx/0xb1b9827440fa2c3f37c52b734137d0d87d7db1c06d09c63633c6637910111579
+      const call = await nft.safeMint(address)
       const nftReceipt = await call.wait(1)
       console.log('tx:', nftReceipt)
       setTxLink(explorerUrl + '/tx/' + nftReceipt.transactionHash)
@@ -1817,14 +1814,26 @@ export default function Home() {
         isClosable: true,
       })
     } catch (e) {
-      toast({
-        title: 'Mint failed',
-        description: 'Something went wrong during the minting process, sorry about that. Please try again.',
-        status: 'error',
-        duration: 8000,
-        position: 'top',
-        isClosable: true,
-      })
+      if (e.data.code === 3) {
+        toast({
+          title: 'Already minted',
+          description: "You can't mint this one twice.",
+          status: 'error',
+          duration: 8000,
+          position: 'top',
+          isClosable: true,
+        })
+      } else {
+        toast({
+          title: 'Mint failed',
+          description: 'Something went wrong during the minting process, sorry about that. Please try again.',
+          status: 'error',
+          duration: 8000,
+          position: 'top',
+          isClosable: true,
+        })
+      }
+
       setLoading(false)
       console.log('error:', e)
     }
