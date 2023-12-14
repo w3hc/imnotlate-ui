@@ -1875,7 +1875,7 @@ export default function Home() {
         )}
 
         <br />
-        {!loading ? (
+        {/* {!loading ? (
           !txLink ? (
             <Button colorScheme="green" variant="outline" onClick={mint}>
               Mint
@@ -1889,7 +1889,7 @@ export default function Home() {
           <Button isLoading colorScheme="green" loadingText="Minting" variant="outline">
             Mint
           </Button>
-        )}
+        )} */}
 
         {txLink && (
           <>
