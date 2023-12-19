@@ -1,21 +1,22 @@
 import { ThemingProps } from '@chakra-ui/react'
-import { Chain } from '@wagmi/chains'
+import { Chain } from '@wagmi/core'
 
 export const SITE_NAME = "I'm not late"
 export const SITE_DESCRIPTION = "This is a historic moment. You're not late and you can prove it."
 export const SITE_URL = 'https://imnotlate.on.fleek.co/'
-export const THEME_INITIAL_COLOR = 'dark'
+
+export const THEME_INITIAL_COLOR = 'system'
 export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'gray'
 export const THEME_CONFIG = {
   initialColorMode: THEME_INITIAL_COLOR,
 }
 
-export const SOCIAL_TWITTER = 'W3HC'
-export const SOCIAL_GITHUB = 'w3hc/nexth'
+export const SOCIAL_TWITTER = 'artherachain'
+export const SOCIAL_GITHUB = 'w3hc/imnotlate-ui'
 
 export const artheraTestnet: Chain = {
   id: 10243,
-  name: 'Arthera TestNet',
+  name: 'Arthera Testnet',
   network: 'artheraTestnet',
   nativeCurrency: {
     decimals: 18,
@@ -30,10 +31,9 @@ export const artheraTestnet: Chain = {
     etherscan: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
     default: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
   },
-}
+} as const satisfies Chain
 
 export const ETH_CHAINS = [artheraTestnet]
-export const alchemyId = process.env.NEXT_PUBLIC_ARBITRUM_ALCHEMY_ID
 
 export const SERVER_SESSION_SETTINGS = {
   cookieName: SITE_NAME,
