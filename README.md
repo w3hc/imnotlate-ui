@@ -1,64 +1,37 @@
-# Arthera Next.js Boilerplate
+# I'm not late
 
-A variant of [Nexth](https://github.com/wslyvh/nexth/) boilerplate for hackathons and quick prototyping.
+Allows users to mint an `I'm not late` NFT.
 
-View the [live demo](https://arthera-nextjs-boilerplate.netlify.app).
+Available on: 
 
-## Features
+- Fleek: [https://imnotlate.on.fleek.co/](https://imnotlate.on.fleek.co/)
+- Netlify: [https://imnotlate.netlify.app/](https://imnotlate.netlify.app/)
 
-- [Next.js](https://nextjs.org/docs)
-- [Chakra UI](https://chakra-ui.com/)
-- [Ethers v6](https://docs.ethers.org/v6/)
-- [viem](https://viem.sh/)
-- [wagmi](https://wagmi.sh/)
-- [Web3Modal SDK from WalletConnect](https://docs.walletconnect.com/)
-- [Sign-In with Ethereum](https://www.login.xyz/)
-- [Gitcoin Passport](https://docs.passport.gitcoin.co/)
-- [usehooks-ts](https://usehooks-ts.com/)
-- [next-SEO](https://github.com/garmeeh/next-seo)
-- [TypeScript](https://www.typescriptlang.org/)
-- [eslint](https://eslint.org/)
-- [prettier](https://prettier.io/)
-- [Husky](https://typicode.github.io/husky/)
+Solidity contracts: https://github.com/w3hc/imnotlate-contracts
 
 ## Install
 
-```bash
-pnpm install
+```sh
+npm i
 ```
 
 ## Run
 
-Create a `.env` on the model of `.env.template`:
-
 ```sh
-cp .env.template .env
+npm run dev
 ```
 
-Add your own keys in your `.env` file, then:
+## Links
 
-```bash
-pnpm dev
-```
-
-## Build
-
-```bash
-pnpm build
-```
-
-## Arthera faucet
-
-You can get a handful of Testnet AA, the native currency of Arthera at [https://faucet.arthera.net/](https://faucet.arthera.net/).
-
-## Gitcoin passport
-
-If you want to use Gitcoin Passport, uncomment line 26 in the `components/layout/Header.tsx` file.
+- Metadata: https://bafybeibud4xds4el75ggpvwgexw45xtxxiv56h5akgfnvrcdad7q2hxgiy.ipfs.w3s.link/imnotlate.json
+- Image: https://bafybeihaafblie2zrbb2y4dsagmyaw5txkqdznzv3ivzrtxliyhqqzhdka.ipfs.w3s.link/imnotlate
+- 1st working version: https://bafybeifzczgb6uiv3nvhfbg5de7pvlj5b2j3fpi4ud6ktgglbr5ymdd62m.ipfs.dweb.link/
+- Contract address: [0xe2c7afe278BD3B60798208F84281A4e4733d1688](https://explorer-test.arthera.net/address/0xe2c7afe278BD3B60798208F84281A4e4733d1688)
 
 ## Support
 
-You can contact me via [Element](https://matrix.to/#/@julienbrg:matrix.org), [Telegram](https://t.me/julienbrg), [Twitter](https://twitter.com/julienbrg), [Discord](https://discord.gg/uSxzJp3J76), or [LinkedIn](https://www.linkedin.com/in/julienberanger/).
+You can contact me via [Element](https://matrix.to/#/@julienbrg:matrix.org), [Telegram](https://t.me/julienbrg), [Twitter](https://twitter.com/julienbrg), [Discord](https://discord.gg/bHKJV3NWUQ), or [LinkedIn](https://www.linkedin.com/in/julienberanger/).
 
-## Credits
+## License
 
-[Nexth](https://github.com/wslyvh/nexth/) boilerplate was built by [wslyvh](https://github.com/wslyvh) and [others](https://github.com/wslyvh/nexth/graphs/contributors).
+[GPL-3.0](https://github.com/w3hc/w3hc-web/blob/main/LICENSE)
